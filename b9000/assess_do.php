@@ -35,6 +35,7 @@ if (isset($_SESSION['login_success']) && isset($_SESSION['urole']) && check_lvl_
 		//Success
 		else if (strcmp($cur_act,SPELL_SUCCESS)==0) {
 			$ind = insert_success_vocab($cur_wid, $cur_gid, $cur_uid);
+			$s_cnt = add_mark_success_vocab($cur_gid, $cur_uid);
 			$next_wid = get_next_word_id($cur_wid,$cur_gid,$cur_uid);
 			
 			if ($next_wid['wid'] > 0) {

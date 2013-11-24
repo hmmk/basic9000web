@@ -24,7 +24,7 @@
 	$(document).ready(function() {
 		$('#search_records').dataTable( {
 			"aaSorting": [ [2,'asc'],[4,'asc']],
-			"aoColumns": [ null,null,null,null,null, null,null,null,null,null,null],
+			"aoColumns": [ null,null,null,null,null, null,null,null,null,null,null,null],
 			"iDisplayLength": 100,
 			"aLengthMenu": [[100, 200, 500, -1], [100, 200, 500,"All"]],
 			"sDom": 'T<"clear">flrtip',
@@ -58,6 +58,7 @@
                     <td width="5%"><b>No. of Vocab.</b></td>
                     <td width="5%"><b>Completion</b></td>
                     <td width="5%"><b>Completion %</b></td>
+                    <td width="5%"><b>Term <?=$cur_term?> Marks</b></td>
                     
                 </tr>
                 <!--<tr>
@@ -71,6 +72,7 @@
                     <th></th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </tr>-->
             </thead>
             <tbody>
@@ -79,6 +81,7 @@
 				foreach($g_rows as $g_record){
 					$grp_vocab_cnt = get_grp_vocab_cnt($g_record['gid']);
 					$complete_word_cnt = get_complete_word_cnt($g_record['gid'],$s_record['uid']);
+					$grp_stu_mark = get_stu_term_mark_by_grp($g_record['gid'],$s_record['uid'],$cur_term);
 ?>
                 <tr>
                 	<td><?=$s_record['uid'];?></td>
@@ -92,6 +95,7 @@
                     <td><?=$grp_vocab_cnt?></td>
                     <td><?=$complete_word_cnt?></td>
                     <td><?=percentage($complete_word_cnt, $grp_vocab_cnt, 0)."%";?></td>
+                    <td><?=$grp_stu_mark?></td>
                 </tr>
 <?php
 				}
