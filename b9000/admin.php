@@ -13,7 +13,8 @@
 <div id="main">
 
 	<h2>Teacher Menu</h2>
-    <p><a href="view_record.php?act=all">View Students' Results</a></p>
+    <p><a href="view_record.php?act=all">View All Students' Results</a></p>
+    <p><a href="view_class.php">View Students' Results by Class</a></p>
     <p><a href="view_record.php?act=staff">View Teachers and Staff Results</a> [For internal test uses]</p>
     <p><a href="admin_vocab_grp_list.php">Show all the vocab</a></p>
 

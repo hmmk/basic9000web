@@ -104,6 +104,4 @@ function percentage($val1, $val2, $precision)
 	}
 	return $res;
 }
-
-
 ?>

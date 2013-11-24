@@ -15,7 +15,7 @@
 			"aaSorting": [[2,'asc'], [3,'asc'], [4,'asc']],
 			"aoColumns": [ { "bSortable": false }, null,null,null,null,null,null],
 			"iDisplayLength": 50,
-			"aLengthMenu": [[50, 100, 200, -1], [50, 100, 200, "All"]],
+			"aLengthMenu": [[50, 100, 200, 500, -1], [50, 100, 200, 500, "All"]],
 			"sDom": 'T<"clear">flrtip',
 			"oTableTools": { "aButtons": [ "copy", "csv", "print" ] }
 		} ).columnFilter( {
@@ -42,9 +42,10 @@
 				$s_records = get_all_students_list ($cur_term);
 			} else if ($cur_act == 'staff'){
 				$s_records = get_all_staff_list ();
+			} else if ($cur_act == 'class'){
+				$class = strtolower($_GET['c']);
+				$s_records = get_students_list_by_class ($cur_term, $class);
 			}
-
-		
 ?>      
 		<h2>All Student Records</h2>
 		

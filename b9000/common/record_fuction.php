@@ -38,4 +38,23 @@ function get_all_staff_list (){
 	return $values;
 }
 
+function get_class_list_by_form ($form,$term){
+	$database = new DatabasePDO();
+	$database->query('SELECT class FROM cymcass.master_class WHERE term = :term AND form = :form');
+	$database->bind(':term', $term);
+	$database->bind(':form', $form);
+	$rows = $database->resultset();		
+	return $rows;
+}
+
+function get_students_list_by_class ($term,$class){
+
+	$database = new DatabasePDO();
+	$database->query('SELECT a.uid, b.class, b.class_no, a.name_chi, a.name_eng, a.gender, a.photo_path, b.term FROM cymcass.master_user_info AS a, cymcass.master_user_group AS b WHERE a.uid = b.uid AND b.term = :term AND b.class = :class AND b.type = "C" ORDER BY b.class_no ASC');
+	$database->bind(':term', $term);
+	$database->bind(':class', $class);
+	$values = $database->resultset();	
+
+	return $values;
+}
 ?>
